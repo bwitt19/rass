@@ -102,3 +102,15 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+#########
+
+# Speech recognition testing code
+speech_rec/
+
+# Mac things
+.DS_Store
+
+# venv things
+bin/
+pyvenv.cfg
