@@ -105,11 +105,9 @@ venv.bak/
 
 #########
 
-# Speech recognition testing code
-speech_rec/
-
 # Mac things
 .DS_Store
+.vscode/
 
 # venv things
 bin/
