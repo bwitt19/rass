@@ -32,6 +32,9 @@ def capturePhoto():
     if not cam.isOpened(): 
         raise Exception("Could not open video device")
     
+    print("Camera opened.")
+    time.sleep(2)
+    
     ret, frame = cam.read()
     cam.release()
     del cam
@@ -97,7 +100,7 @@ def getValidCommand():
     
 
 
-if __name__ == "__main__":
+def main():
     print(__doc__)
     print("Starting UI...")
     
@@ -165,3 +168,6 @@ if __name__ == "__main__":
         
     # Destroy all remaining windows before exiting
     cv2.destroyAllWindows()
+
+if __name__ == "__main__":
+    main()

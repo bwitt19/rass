@@ -7,7 +7,7 @@ Usage:
 When displaying image:
 Use "l" to display less rects, 'm' to display more rects, "q" to quit.
 '''
- 
+
 import sys
 import cv2
 import numpy as np
@@ -146,7 +146,7 @@ def annotate_image(im, rects, numShowRects=100):
     return imOut
     
 
-if __name__ == '__main__':
+def main():
     # If image path and f/q is not passed as command
     # line arguments, quit and display help message
     if len(sys.argv) < 3:
@@ -200,3 +200,6 @@ if __name__ == '__main__':
             break
     # close image show window
     cv2.destroyAllWindows()
+
+if __name__ == "__main__":
+    main()
