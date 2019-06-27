@@ -24,7 +24,7 @@ LBB_RATIO = 1/32
 
 
 # process(): Processes image using selective search
-# Input: im, numpy.ndarray containing image to be processed
+# Input: oldIm, numpy.ndarray containing image to be processed
 # Input: mode, string determining what mode (fast, quality, lbb); Default = "ql"
 # Input: multithread, bool determining whether to multithread; Default = True
 # Output: im, numpy.array containing data for resized image used in search
@@ -115,8 +115,9 @@ def process(oldIm, mode="ql", multithread=True):
 # Displays region proposals given image data and proposed region info
 # Input: im, numpy.ndarray containing image data
 # Input: rects, numpy.ndarray containing data for proposed regions in image
+# Input: numShowRects, int of number of region proposals to show; Default = 100
 # Output: imOut, numpy.ndarray containing image data with region proposals
-def annotate_image(im, rects):
+def annotate_image(im, rects, numShowRects=100):
 
     # Check that im and rects are of correct type
     if not isinstance(im, np.ndarray):
@@ -130,10 +131,6 @@ def annotate_image(im, rects):
     if rects.shape[WIDTH] != 4:
         raise ValueError("Values in rects should be width 4 (storing x, y, w, h)")
 
-
-    # number of region proposals to show
-    numShowRects = 100
- 
     # create a copy of original image
     imOut = im.copy()
 

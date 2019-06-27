@@ -8,9 +8,6 @@ import cv2
 import speech_recognition as sr
 import numpy as np
 import time
-
-# Importing file ./selective_search/ssearch.py -- clean up for module
-sys.path.append("./selective_search")
 import ssearch
 
 ASCII_BEL = '\007'
@@ -121,11 +118,11 @@ if __name__ == "__main__":
         # Get voice command and validate it
         text_input = getValidCommand()
 
-        # Do action corresponding to given voice command
         # If user's command matches a sentinel, quit loop and program
         if text_input in SENTINEL_VALUES:
             break
 
+        # Do action corresponding to given voice command
         # Move to next object
         if text_input == ACTIONS[NEXT]:
             if i < len(rects):
