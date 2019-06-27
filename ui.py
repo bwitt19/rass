@@ -3,11 +3,9 @@
   is controlled via voice commands.
 '''
 
-import sys
+import time
 import cv2
 import speech_recognition as sr
-import numpy as np
-import time
 import ssearch
 
 ASCII_BEL = '\007'
