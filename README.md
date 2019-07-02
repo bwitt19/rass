@@ -8,7 +8,7 @@ To run, this program requires Python 3.x and a few modules (you can use a venv f
 After that, you can just run `ui.py` with Python 3, and the rest should work automatically.
 
 ## What it does
-The program will take a picture from your default webcam and analyze it to try and recognize objects within the scene.
+The program will take a picture from your default webcam and analyze it to try and recognize objects within the scene.  
 Afterwards, it will wait and listen for user input vocally for a select set of keywords after a keypress from the user. _(OpenCV requires that you be focused on the window with the image to have the keypress be registered -- I'm working on changing this)_
 
 Keywords you can use:
