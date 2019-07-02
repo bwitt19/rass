@@ -4,11 +4,10 @@ Proof of concept for a voice interface for an object mouse used by a robotic arm
 ## Instructions to run
 To run, this program requires Python 3.x and a few modules (you can use a venv for this) that I've put in pip_requirements.txt. You can install these with `pip -r pip_requirements.txt`
 
-After that, you can just run ui.py with Python 3, and the rest should work automatically.
+After that, you can just run `ui.py` with Python 3, and the rest should work automatically.
 
 ## What it does
 The program will take a picture from your default webcam and analyze it to try and recognize objects within the scene.
-
 Afterwards, it will wait and listen for user input vocally for a select set of keywords after a keypress from the user.
 Keywords you can use:
 * "next": Choose the next object in a set of recognized objects.
