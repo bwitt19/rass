@@ -31,10 +31,11 @@ def capturePhoto():
         raise Exception("Could not open video device")
     
     print("Camera opened.")
-    time.sleep(2)
+    time.sleep(1)
     
     ret, frame = cam.read()
     cam.release()
+    cv2.destroyAllWindows()
     del cam
 
     if not ret:
