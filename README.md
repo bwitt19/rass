@@ -12,12 +12,12 @@ The program will take a picture from your default webcam and analyze it to try a
 Afterwards, it will wait and listen for user input vocally for a select set of keywords after a keypress from the user. _(OpenCV requires that you be focused on the window with the image to have the keypress be registered -- I'm working on changing this)_
 
 Keywords you can use:
-* "next": Choose the next object in a set of recognized objects.
-* "previous": Choose the previous object.
-* "focus": Zoom in and focus on a particular object; this will choose this image to be the new base image, and objects will be searched for within this new frame.
-* "refresh": Take a new photo and abandon current object set to reanalyze for objects.
-* "select": Select the current object being focused on. _As this is a proof of concept however, what this does is instead display the coordinates of the object within the image to the user, and refresh the frame shown._
-* "quit", "exit", "stop": Exit the program.
+* __"next"__: Choose the next object in a set of recognized objects.
+* __"previous"__: Choose the previous object.
+* __"focus"__: Zoom in and focus on a particular object; this will choose this image to be the new base image, and objects will be searched for within this new frame.
+* __"refresh"__: Take a new photo and abandon current object set to reanalyze for objects.
+* __"select"__: Select the current object being focused on. _As this is a proof of concept however, what this does is instead display the coordinates of the object within the image to the user, and refresh the frame shown._
+* __"quit", "exit", "stop"__: Exit the program.
 
 Once voice input is recorded, it will be translated from speech to text using the Google Speech Recognition API within the python [SpeechRecognition module](https://pypi.org/project/SpeechRecognition/).
 
