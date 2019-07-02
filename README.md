@@ -1,5 +1,5 @@
 # rass
-Proof of concept for a voice interface for an object mouse used by a robotic arm. 
+Proof of concept for a voice interface for an object mouse used by a robotic arm.  
 _(robotic arm selective search)_
 
 ## Instructions to run
