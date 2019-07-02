@@ -26,10 +26,11 @@ LBB_RATIO = 1/32
 # process(): Processes image using selective search
 # Input: oldIm, numpy.ndarray containing image to be processed
 # Input: mode, string determining what mode (fast, quality, lbb); Default = "ql"
+# Input: resize, bool determining whether to resize the image to max 500x500
 # Input: multithread, bool determining whether to multithread; Default = True
 # Output: im, numpy.array containing data for resized image used in search
 # Output: rects, numpy.ndarray containing proposed regions from selective search
-def process(oldIm, mode="ql", multithread=True):
+def process(oldIm, mode="ql", resize=True, multithread=True):
 
     if not isinstance(oldIm, np.ndarray):
         raise TypeError("Passed argument im must be of type numpy.ndarray")
@@ -44,19 +45,20 @@ def process(oldIm, mode="ql", multithread=True):
         cv2.setNumThreads(4)
 
     # resize image
-    # set by upper bound specified below
-    oldHeight = im.shape[HEIGHT]
-    oldWidth = im.shape[WIDTH]
+    if resize == True:
+        # set by upper bound specified below
+        oldHeight = im.shape[HEIGHT]
+        oldWidth = im.shape[WIDTH]
 
-    if oldHeight > oldWidth:
-        newHeight = UPPER_BOUND
-        newWidth = int(oldWidth * newHeight / oldHeight)
-    else:
-        newWidth = UPPER_BOUND
-        newHeight = int(oldHeight * newWidth / oldWidth)
+        if oldHeight > oldWidth:
+            newHeight = UPPER_BOUND
+            newWidth = int(oldWidth * newHeight / oldHeight)
+        else:
+            newWidth = UPPER_BOUND
+            newHeight = int(oldHeight * newWidth / oldWidth)
 
-    # Old: newWidth = int(im.shape[LENGTH] * newHeight / im.shape[HEIGHT])
-    im = cv2.resize(im, (newWidth, newHeight))    
+        # Old: newWidth = int(im.shape[LENGTH] * newHeight / im.shape[HEIGHT])
+        im = cv2.resize(im, (newWidth, newHeight))    
  
     # create Selective Search Segmentation Object using default parameters
     ss = cv2.ximgproc.segmentation.createSelectiveSearchSegmentation()
@@ -95,7 +97,7 @@ def process(oldIm, mode="ql", multithread=True):
     rects = ss.process()
     # Large bounding box mode:
     if largeMode:
-        totalImageArea = newHeight * newWidth
+        totalImageArea = im.shape[HEIGHT] * im.shape[WIDTH]
         lbbMinArea = totalImageArea * LBB_RATIO
 
         # Filter list of rects so that they are of a certain size: lbbMinArea
