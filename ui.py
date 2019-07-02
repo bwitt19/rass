@@ -107,12 +107,18 @@ def main():
     fullFrame = capturePhoto()
     frame, rects = ssearch.process(fullFrame)
     frameAnnotated = ssearch.annotate_image(frame, rects)
+    print("Displaying full scene. Press any key to continue.")
+    cv2.imshow("Annotated Scene", frameAnnotated)
+    cv2.waitKey(0)
+    cv2.destroyWindow("Annotated Scene")
+
     i = 0
     while run_ui:
         # Create and display window with current recognized image
         x, y, w, h = rects[i]
         currObject = frame[y:y+h, x:x+w]
         print("\nDisplaying object #{}".format(i + 1))
+        print("Press any key to continue.")
         cv2.imshow('Current Object', currObject)
         cv2.waitKey(0)
         
@@ -139,8 +145,9 @@ def main():
                 print("There are no more previous objects.")
         # Focus in on currObject and do ssearch within that object
         elif text_input == ACTIONS[FOCUS]:
+            print("\nAnalyzing current view as new scene...")
             frame = currObject
-            frame, rects = ssearch.process(frame)
+            frame, rects = ssearch.process(frame, resize=False)
             frameAnnotated = ssearch.annotate_image(frame, rects)
             i = 0
         # Refresh and obtain new frame from camera, redo ssearch and start over
@@ -148,6 +155,11 @@ def main():
             fullFrame = capturePhoto()
             frame, rects = ssearch.process(fullFrame)
             frameAnnotated = ssearch.annotate_image(frame, rects)
+
+            print("\nDisplaying new full scene. Press any key to continue.")
+            cv2.imshow("Annotated Scene", frameAnnotated)
+            cv2.waitKey(0)
+            cv2.destroyWindow("Annotated Scene")
             i = 0
         # Select current object
         elif text_input == ACTIONS[SELECT]:
@@ -158,6 +170,7 @@ def main():
         # Briefly show full annotated photo
         elif text_input == ACTIONS[FULL]:
             print("Displaying full scene...")
+            print("Press any key to continue.")
             cv2.imshow("Full Scene", frameAnnotated)
             cv2.waitKey(0)
         
