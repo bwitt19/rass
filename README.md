@@ -19,7 +19,7 @@ Keywords you can use:
 * "select": Select the current object being focused on. _As this is a proof of concept however, what this does is instead display the coordinates of the object within the image to the user, and refresh the frame shown._
 * "quit", "exit", "stop": Exit the program.
 
-Once voice input is recorded, it will be translated from speech to text using a Google API within the Python SpeechRecognition module.
+Once voice input is recorded, it will be translated from speech to text using the Google Speech Recognition API within the python [SpeechRecognition module](https://pypi.org/project/SpeechRecognition/).
 
 Of note:
 1. This program uses your default mic and webcam -- I haven't yet added functionality to mess around with this.
